@@ -11,6 +11,31 @@ current_state = START;
 
 static short delay = 0;
 
+void dim_lights(unsigned int t){
+  unsigned int i;
+  for(i = t; i > 0; i--)
+    __delay_cycles(1);
+}
+
+void dim(){
+  unsigned int j;
+  while(1){
+    for(j = 1; j < 1200; j++){
+      led_state(0,1); //GREEN ON
+      dim_lights(j);
+      led_state(0,0); //LED OFF
+      dim_lights(1200-j);
+    }
+
+    for(j = 1200; j > 1; j--){
+      led_state(0,1); //green on
+      dim_lights(j);
+      led_state(0,0); //green off
+      dim_lights(1200-j);
+    }
+  }
+}
+
 char buzzer_state; //import from buzzer
 
 void state_update(){
@@ -22,7 +47,7 @@ void state_update(){
 
     if(buzzer_state == BUZZER_OFF)//set buzzer off
       current_state = Blinky_Toy_0;
-    if(top_1 || top_2 || top_3 || top_4 || bottom){ //skip song
+    if(top_1 || top_2 || top_3 || bottom){ //skip song
       current_state = Blinky_Toy_0;
 
       timer_set_transition(20); //delay
@@ -39,7 +64,7 @@ void state_update(){
     
   case Blinky_Toy_1:
     led_state(1,0);//Red led on
-    if(top_1 || top_2 || top_3 || top_4)
+    if(top_1 || top_2 || top_3)
       current_state = BUZZER;
     else if (top_2)
       current_state = LED_0;
@@ -66,9 +91,7 @@ void state_update(){
       period = 3000;
     if(top_3)
       period = 5000;
-    if(top_4)
-      period = 10000;
-
+    
     buzzer_set_period(period);
     led_state(period != 0, period == 0);
 
@@ -120,7 +143,7 @@ void state_update(){
     if(bottom)
       current_state = Blinky_Toy_0; //go back to first state
 
-    else if (top_4)
+    else if (top_3)
       current_state = LED_0;
     break;
 
@@ -130,7 +153,7 @@ void state_update(){
     if(bottom)
       current_state = Blinky_Toy_0; //back to first state
 
-    else if (top_4)
+    else if (top_3)
       current_state = LED_0;
 
     break;

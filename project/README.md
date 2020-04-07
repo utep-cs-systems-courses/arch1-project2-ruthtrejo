@@ -1,30 +1,25 @@
 # Lab 2: Blinky-Buzzy Toy
 
-The Blinky-Buzzy Toy plays the Wii Theme Music. In order to play the song,
-simply press the first switch on the bottom board (S1). This will trigger the
-song to play and also change the LED lights from red to green depending on the
-beat of the song.
+For your second project, your task is to use the MSP430 Microcontroller and your creativity to design a toy. Each MSP430 board is equipped with buttons, LED's, a speaker, and an LED screen. Utilizing these features and your knowledge of I/O, develop a program to turn the board into a toy.
 
-In order to stop the song from playing you may press any of the switches on
-the top board to stop it.
-
-The second switch on the bottom board (S2) will make the LED lights switch
-mimicking a police car. To stop the LED lights from flickering, pressing the
-top switch (S2) on the top board will stop it and the LED light will only
-light up GREEN.
-
-The switches on the top board (S1, S2, S3, S4) will play a note whenever
-pushed. The note is the same for a certain switch. 
-
-This toy at minimum does the following:
+This toy should at minimum:
 
 * generate sounds,
 * dynamically change the LEDs that are illuminated, both brighly and dimmly,
 * implement a state machine to maintain the state of the toy,
 * and use the four buttons on the expansion board (P2.0-3) to transition the state machine.
 
-Running or resetting toy:
+**Furthermore, at least one of the functions to transition the state machine must be written by you in assembly language.**
 
-* to run the toy, you have to enter           > make load
-* to clean the toy, you have to enter         > make clean
-* to reset the toy, you have to enter         > mspdebug rf2500 "reset"
+## Getting Started 
+
+Inside this repository you will find two directories:
+1. The 'demos' directory contains sample programs for you to review and learn from. These example programs are a great starting point in understanding how to program the MSP430 microcontroller. See the readme in the demo directory on how to compile and run the demo programs.
+2. The 'project' directory should contain the source code for your toy.
+
+## What Should Be In Your Repo
+
+Your project will be graded on the following items:
+* Source code for your toy (only .c, .s and .h files).
+* A README containing a description of your toy, how to compile it, how to run it, and how to use it.
+* A Makefile with appropriate rules to build and clean your toy.

@@ -7,7 +7,7 @@
 #define TOP_1 BIT0 //p2.0
 #define TOP_2 BIT1 //p2.1
 #define TOP_3 BIT2 //p2.2
-#define TOP_4 BIT2 //p2.3
+#define TOP_4 BIT3 //p2.3
 #define TOP_SWITCHES (TOP_1 | TOP_2 | TOP_3 |  TOP_4)
 
 void button_init();

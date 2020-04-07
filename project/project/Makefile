@@ -1,13 +1,13 @@
 
 
-SRC = home.o state_machine.o timer.o buttons.o buzzer.o led.o
+SRC = home.o state_machine.o timer.o buttons.o buzzer.o led.o binary_count.s
 CPU		= msp430g2553
 CFLAGS		= -mmcu=${CPU} -I../h
 LDFLAGS = ../demos/lib/libTimer.a -L/opt/ti/msp430_gcc/include
 
 # Switch the compiler (for the internal make rules)
 CC		= msp430-elf-gcc
-AS		= msp430-elf-as
+AS		= $(CC);
 
 all: blinky_buzzy_toy.elf
 
@@ -23,3 +23,6 @@ load: blinky_buzzy_toy.elf
 
 clean:
 	rm -f *.o *.elf
+
+tiddyUp:
+	rm -f *.o~ *.s~ *.c~ *.h~ 
