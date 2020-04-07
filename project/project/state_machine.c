@@ -15,7 +15,7 @@ void dim_lights(unsigned int t){
   unsigned int i;
   for(i = t; i > 0; i--)
     __delay_cycles(1);
-}
+}//end dim_lights
 
 void dim(){
   unsigned int j;
@@ -34,7 +34,7 @@ void dim(){
       dim_lights(1200-j);
     }
   }
-}
+}//end dim
 
 char buzzer_state; //import from buzzer
 

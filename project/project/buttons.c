@@ -2,6 +2,7 @@
 #include "buttons.h"
 #include "led.h"
 #include "buzzer.h"
+#include "state_machine.h"
 
 char bottom; //bottom switch
 char top_1;  // starts from left first switch
@@ -78,7 +79,7 @@ void switch_interrupt_handler(){ //Handler for switches
 
   if(top_4){
     //led_state(0,0);
-    // binary_count();
+    //binary_count();
     dim();
   }
 
