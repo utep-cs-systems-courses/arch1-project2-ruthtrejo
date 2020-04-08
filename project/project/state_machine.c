@@ -47,7 +47,7 @@ void state_update(){
 
     if(buzzer_state == BUZZER_OFF)//set buzzer off
       current_state = Blinky_Toy_0;
-    if(top_1 || top_2 || top_3 || bottom){ //skip song
+    if(top_1 || top_2 || bottom){ //skip song
       current_state = Blinky_Toy_0;
 
       timer_set_transition(20); //delay
@@ -56,6 +56,7 @@ void state_update(){
       buzzer_set_period(0); 
     }
     break;
+    
   case Blinky_Toy_0:
     timer_set_transition(30); //delay
     led_state(0,1); //Red led on
@@ -64,7 +65,7 @@ void state_update(){
     
   case Blinky_Toy_1:
     led_state(1,0);//Red led on
-    if(top_1 || top_2 || top_3)
+    if(top_1 || top_2)
       current_state = BUZZER;
     else if (top_2)
       current_state = LED_0;
@@ -89,8 +90,6 @@ void state_update(){
       period = 1000;
     if(top_2)
       period = 3000;
-    if(top_3)
-      period = 5000;
     
     buzzer_set_period(period);
     led_state(period != 0, period == 0);
@@ -143,7 +142,7 @@ void state_update(){
     if(bottom)
       current_state = Blinky_Toy_0; //go back to first state
 
-    else if (top_3)
+    else if (top_2)
       current_state = LED_0;
     break;
 
@@ -153,7 +152,7 @@ void state_update(){
     if(bottom)
       current_state = Blinky_Toy_0; //back to first state
 
-    else if (top_3)
+    else if (top_2)
       current_state = LED_0;
 
     break;

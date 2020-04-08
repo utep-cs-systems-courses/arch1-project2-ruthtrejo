@@ -77,10 +77,12 @@ void switch_interrupt_handler(){ //Handler for switches
   top_3 = (p2val & TOP_3) ? 0 : 1; //S3
   top_4 = (p2val & TOP_4) ? 0 : 1; //S4
 
-  if(top_4){
-    //led_state(0,0);
-    //binary_count();
+  if(top_3){
     dim();
+  }
+  if(top_4){
+    led_state(0,0);
+    binary_count();
   }
 
 }// end switch_interrupt_handler
