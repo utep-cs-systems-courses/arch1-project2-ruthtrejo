@@ -81,6 +81,7 @@ void switch_interrupt_handler(){ //Handler for switches
   if(top_3){
     dim();
   }
+  
   if(top_4){
     //Whenever top_4 is pressed it will start counting in binary up to 11
     // so the switch must be pressed every time to move to the next number

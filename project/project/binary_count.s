@@ -16,7 +16,9 @@ jt:
 binary_count:
 
 ;;; 	cmp	#4, &state	;state-3
-
+	cmp	#3, R12 	;r12 - 3
+	jlo	out		;if(3 > 12) goto out
+	
 	mov	&state, r12
 	add	r12, r12	;r12 = 2 * state
 	mov	jt(r12), r0	;jmp jt[state]

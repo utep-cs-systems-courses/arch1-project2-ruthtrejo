@@ -1,0 +1,28 @@
+#include "led.h"
+
+void binary_count(){
+  static char state = 0;
+
+  switch(state){
+  case 0:
+    led_state(0,0); //green and red off to indicate 0
+    state = 1;
+    break;
+
+  case 1:
+    led_state(0,1); //turn green on to indicate binary rep 01
+    state = 2;
+    break;
+
+  case 2:
+    led_state(1,0); //turn red on to indicate binary rep 1
+    0
+    break;
+
+  case 3:
+    led_state(1,1); //turn red AND green on to indicate ibnary rep 11
+    state = 
+    
+    
+  }
+}

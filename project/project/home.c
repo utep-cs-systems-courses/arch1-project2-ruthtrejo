@@ -11,7 +11,7 @@ void main(void){
   buzzer_init();     // start song
 
   led_init();        //Initialize led
-  led_state(1,1);
+  led_state(0,0);
 
   enableWDTInterrupts(); //Interrupts
 

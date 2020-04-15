@@ -4,13 +4,18 @@
 #include "led.h"
 #include "buttons.h"
 
-//State transitions
+//State transition cases
 static enum{START, Blinky_Toy_0,Blinky_Toy_1, BUZZER, LED_0, LED_1, LED_2, LED_ON, LED_OFF, DIM_LED}
 
 current_state = START;
 
 static short delay = 0;
 
+/* This piece of code dims LED light
+   The only way to stop it is to  
+   interrupt it is by playing the song.
+   Bottom switch (s1) Didn't know how
+   to fix it :( */
 void dim_lights(unsigned int t){
   unsigned int i;
   for(i = t; i > 0; i--)
@@ -42,24 +47,32 @@ void state_update(){
   switch(current_state){
   case START:
     led_state(0,0); //turn off led
-
+    
     buzzer_play(); //start song
 
-    if(buzzer_state == BUZZER_OFF)//set buzzer off
+    /* If nothing interrupts or skips the song, turn off BOTH leds
+       after the song finishes playing! */
+    //led_state(0,0); //turn off leds
+    
+    if(buzzer_state == BUZZER_OFF){ //set buzzer off
+      led_state(0,0); //turn leds off
       current_state = Blinky_Toy_0;
+    }
+
     if(top_1 || top_2 || bottom){ //skip song
+      led_state(0,0);
       current_state = Blinky_Toy_0;
 
       timer_set_transition(20); //delay
 
       buzzer_state = BUZZER_OFF; //reset buzzer
-      buzzer_set_period(0); 
+      buzzer_set_period(0);
     }
     break;
     
   case Blinky_Toy_0:
     timer_set_transition(30); //delay
-    led_state(0,1); //Red led on
+    led_state(0,0); //Green led on
     current_state = Blinky_Toy_1; //set current state to next state
     break;
     
@@ -114,7 +127,7 @@ void state_update(){
     timer_set_transition(0); //timer is reset
 
     if(timer_elapsed() - delay <= 2){ //time passed
-      led_state(1,1); //turn on led
+      led_state(0,0); //turn on led led_state(1,1)
       buzzer_set_period(1000); //turn on timer
 
       timer_set_transition(SET_TIME); //set time
