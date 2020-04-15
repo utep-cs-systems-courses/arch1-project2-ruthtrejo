@@ -47,7 +47,7 @@ void buzzer_play(){
   }//end note == 0
 
   else{
-    led_state(0,1); //GREEN LED on when song on
+    led_state(0,0); //GREEN LED on when song on
   }//end else
   
   buzzer_set_period(note); //play curr note

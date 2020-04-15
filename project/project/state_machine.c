@@ -72,7 +72,7 @@ void state_update(){
     
   case Blinky_Toy_0:
     timer_set_transition(30); //delay
-    led_state(0,0); //Green led on
+    //led_state(0,0); //Green led on
     current_state = Blinky_Toy_1; //set current state to next state
     break;
     
